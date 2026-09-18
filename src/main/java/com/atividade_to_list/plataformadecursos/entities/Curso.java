@@ -27,6 +27,6 @@ public class Curso {
     @NotBlank
     private String cargahoraria;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "curso")
     private Set<Matricula> matriculas = new HashSet<>();
 }

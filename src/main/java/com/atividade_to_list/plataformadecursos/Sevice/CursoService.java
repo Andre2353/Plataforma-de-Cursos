@@ -20,12 +20,20 @@ public class CursoService {
         this.cursoRepository = cursoRepository;
     }
 
-    public CursoRequest criarCUrso(CursoRequest request) {
+    public CursoResponse criarCurso(CursoRequest request) {
         Curso curso = new Curso();
         curso.setTitulo(request.getTitulo());
         curso.setDescricao(request.getDescricao());
         curso.setCargahoraria(request.getCargahoraria());
-        return request;
+
+        Curso cursoSalvo = cursoRepository.save(curso);
+
+        return new CursoResponse(
+                cursoSalvo.getId(),
+                cursoSalvo.getTitulo(),
+                cursoSalvo.getDescricao(),
+                cursoSalvo.getCargahoraria()
+        );
     }
 
     public List<CursoResponse> mostrarcursos() {
@@ -55,20 +63,22 @@ public class CursoService {
     public String deletar(long id) {
         Optional<Curso> curso = cursoRepository.findById(id);
         if (curso.isEmpty()) {
-            return "Usuário não existe";
+            return "Curso não existe";
         } else {
             cursoRepository.deleteById(id);
-            return "Usuário kickado";
+            return "Curso kickado";
         }
     }
 
-    public String atualizarid(Long id, Curso cursoatualizado) {
+    public String atualizarid(Long id, CursoRequest cursoatualizado) {
         Curso cursoexistente = cursoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("usuario não encontrado: " + id));
             cursoexistente.setTitulo(cursoatualizado.getTitulo());
             cursoexistente.setDescricao(cursoatualizado.getDescricao());
             cursoexistente.setCargahoraria(cursoatualizado.getCargahoraria());
+        cursoRepository.save(cursoexistente);
         return "usuario atualizado com sucesso";
+
     }
 
 }
