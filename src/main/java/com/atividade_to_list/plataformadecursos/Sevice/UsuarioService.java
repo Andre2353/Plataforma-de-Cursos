@@ -56,4 +56,16 @@ public class UsuarioService {
         usuarioRepository.save(usuarioexistente);
         return "usuario atualizado com sucesso";
     }
+    public UsuarioResponse buscarpoid(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException
+                        ("Produlto não encontrado com id" + id));
+        return new UsuarioResponse(
+                usuario.getId(),
+                usuario.getName(),
+                usuario.getEmail(),
+                usuario.getSenha()
+
+        );
+    }
 }
