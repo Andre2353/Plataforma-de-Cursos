@@ -45,4 +45,15 @@ public class UsuarioService {
             return "Usuário kickado";
         }
     }
+    public String atualizarid(Long id, Usuario usuarioatualizado) {
+        Usuario usuarioexistente = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("usuario não encontrado: " + id));
+
+        usuarioexistente.setName(usuarioatualizado.getName());
+        usuarioexistente.setEmail(usuarioatualizado.getEmail());
+        usuarioexistente.setSenha(usuarioatualizado.getSenha());
+
+        usuarioRepository.save(usuarioexistente);
+        return "usuario atualizado com sucesso";
+    }
 }
