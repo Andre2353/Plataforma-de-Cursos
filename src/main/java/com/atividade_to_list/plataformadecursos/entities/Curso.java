@@ -7,20 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "Curso")
+public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    private String name;
+    private String titulo;
+    private String Descricao;
     @NotBlank
-    private LocalDateTime dataHora;
+    private String cargahoraria;
 }

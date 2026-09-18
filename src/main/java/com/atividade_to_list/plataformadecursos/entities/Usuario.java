@@ -29,5 +29,5 @@ public class Usuario {
     @JoinTable(name = "usuario_categoria",
             joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id"))
-    private Set<Categoria> categorias = new HashSet<>();
+    private Set<Curso> cursos = new HashSet<>();
 }
