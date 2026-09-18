@@ -32,12 +32,13 @@ public class CursoService {
         return cursoRepository.findAll().stream()
                 .map(curso -> new CursoResponse(
                         curso.getId(),
-                       curso.getTitulo(),
+                        curso.getTitulo(),
                         curso.getDescricao(),
                         curso.getCargahoraria()
-                        ))
+                ))
                 .toList();
     }
+
     public CursoResponse buscarpoid(Long id) {
         Curso curso = cursoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException
@@ -50,6 +51,7 @@ public class CursoService {
         );
 
     }
+
     public String deletar(long id) {
         Optional<Curso> curso = cursoRepository.findById(id);
         if (curso.isEmpty()) {
@@ -58,6 +60,15 @@ public class CursoService {
             cursoRepository.deleteById(id);
             return "Usuário kickado";
         }
+    }
+
+    public String atualizarid(Long id, Curso cursoatualizado) {
+        Curso cursoexistente = cursoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("usuario não encontrado: " + id));
+            cursoexistente.setTitulo(cursoatualizado.getTitulo());
+            cursoexistente.setDescricao(cursoatualizado.getDescricao());
+            cursoexistente.setCargahoraria(cursoatualizado.getCargahoraria());
+        return "usuario atualizado com sucesso";
     }
 
 }
