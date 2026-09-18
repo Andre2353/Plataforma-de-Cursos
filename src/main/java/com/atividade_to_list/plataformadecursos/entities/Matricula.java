@@ -21,6 +21,7 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime dt_matricula;
+    @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
     private Usuario usuario;

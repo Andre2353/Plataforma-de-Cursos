@@ -1,6 +1,7 @@
 package com.atividade_to_list.plataformadecursos.DTOs;
 
 import com.atividade_to_list.plataformadecursos.entities.Status;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,10 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MatriculaResponse {
+public class MatriculaRequest {
     private Long id;
+    @NotBlank
     private LocalDateTime dt_matricula;
+    @NotBlank
     private Status status;
 }
