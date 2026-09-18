@@ -59,7 +59,7 @@ public class UsuarioService {
     public UsuarioResponse buscarpoid(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException
-                        ("Produlto não encontrado com id" + id));
+                        ("Usuario não encontrado com id" + id));
         return new UsuarioResponse(
                 usuario.getId(),
                 usuario.getName(),

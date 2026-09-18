@@ -37,4 +37,15 @@ public class CursoService {
                         ))
                 .toList();
     }
+    public CursoResponse buscarpoid(Long id) {
+        Curso curso = cursoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException
+                        ("Curso não encontrado com id" + id));
+        return new CursoResponse(
+                curso.getId(),
+                curso.getTitulo(),
+                curso.getDescricao(),
+                curso.getCargahoraria()
+        );
+    }
 }
