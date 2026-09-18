@@ -10,6 +10,7 @@ import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CursoService {
@@ -47,5 +48,16 @@ public class CursoService {
                 curso.getDescricao(),
                 curso.getCargahoraria()
         );
+
     }
+    public String deletar(long id) {
+        Optional<Curso> curso = cursoRepository.findById(id);
+        if (curso.isEmpty()) {
+            return "Usuário não existe";
+        } else {
+            cursoRepository.deleteById(id);
+            return "Usuário kickado";
+        }
+    }
+
 }
