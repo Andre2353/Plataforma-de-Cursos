@@ -15,4 +15,7 @@ public class CursoResponse {
     private String Descricao;
     @NotBlank
     private String cargahoraria;
+
+    public CursoResponse(Long id, @NotBlank String titulo, String descricao, @NotBlank String cargahoraria) {
+    }
 }

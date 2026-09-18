@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MatriculaRequest {
-    private Long id;
     @NotBlank
     private LocalDateTime dt_matricula;
     @NotBlank
