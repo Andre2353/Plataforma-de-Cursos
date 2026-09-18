@@ -7,6 +7,7 @@ import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -34,5 +35,14 @@ public class UsuarioService {
                         usuario.getSenha()
                 ))
                 .toList();
+    }
+    public String deletar(long id) {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if (usuario.isEmpty()) {
+            return "Usuário não existe";
+        } else {
+            usuarioRepository.deleteById(id);
+            return "Usuário kickado";
+        }
     }
 }
