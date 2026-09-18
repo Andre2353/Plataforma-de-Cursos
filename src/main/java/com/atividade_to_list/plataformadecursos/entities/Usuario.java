@@ -25,9 +25,6 @@ public class Usuario {
     @NotBlank
     @Size(min = 4,max = 20)
     private String senha;
-    @ManyToMany
-    @JoinTable(name = "Matricula",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "Cursos_id"))
-    private Set<Curso> cursos = new HashSet<>();
+    @OneToMany(mappedBy = "usuario")
+    private Set<Matricula> matriculas = new HashSet<>();
 }
