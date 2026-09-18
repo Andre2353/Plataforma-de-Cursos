@@ -7,12 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Curso")
+@Table(name = "cursos")
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +26,10 @@ public class Curso {
     private String Descricao;
     @NotBlank
     private String cargahoraria;
+
+    @ManyToMany
+    @JoinTable(name = "usuario_categoria",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "cursos_id"))
+    private Set<Usuario> usuarios = new HashSet<>();
 }
