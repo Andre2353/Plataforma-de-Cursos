@@ -26,8 +26,8 @@ public class Usuario {
     @Size(min = 4,max = 20)
     private String senha;
     @ManyToMany
-    @JoinTable(name = "usuario_categoria",
+    @JoinTable(name = "Matricula",
             joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+            inverseJoinColumns = @JoinColumn(name = "Cursos_id"))
     private Set<Curso> cursos = new HashSet<>();
 }

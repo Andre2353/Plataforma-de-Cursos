@@ -27,9 +27,6 @@ public class Curso {
     @NotBlank
     private String cargahoraria;
 
-    @ManyToMany
-    @JoinTable(name = "usuario_categoria",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "cursos_id"))
+
     private Set<Usuario> usuarios = new HashSet<>();
 }
