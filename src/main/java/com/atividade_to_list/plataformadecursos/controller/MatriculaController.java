@@ -41,6 +41,10 @@ public class MatriculaController {
         matriculaService.deletar(id);
         return ResponseEntity.noContent().build();
     }
-
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizarMatricula(@PathVariable Long id, @Valid @RequestBody MatriculaRequest request) {
+        String resposta = matriculaService.atualizarid(id, request);
+        return ResponseEntity.ok(resposta);
+    }
 }
 

@@ -4,6 +4,7 @@ import com.atividade_to_list.plataformadecursos.DTOs.UsuarioRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.UsuarioResponse;
 import com.atividade_to_list.plataformadecursos.Sevice.UsuarioService;
 import com.atividade_to_list.plataformadecursos.entities.Usuario;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +49,7 @@ public class UsuarioController {
         String resposta = usuarioService.deletar(id);
         return ResponseEntity.ok(resposta);
     }
+
+
 }
 

@@ -4,6 +4,7 @@ import com.atividade_to_list.plataformadecursos.entities.Curso;
 import com.atividade_to_list.plataformadecursos.entities.Status;
 import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +17,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MatriculaRequest {
-    @NotBlank
-    private LocalDateTime dt_matricula;
-    @NotBlank
+    @NotNull
+    private LocalDateTime dtMatricula;
+    @NotNull
     private Status status;
-    private Usuario usuarioId;
-    private Curso cursoId;
+    @NotNull
+    private Long usuarioId;
+    @NotNull
+    private Long cursoId;
 }
