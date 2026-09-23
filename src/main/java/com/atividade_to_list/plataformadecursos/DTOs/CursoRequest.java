@@ -13,7 +13,7 @@ import lombok.Setter;
 public class CursoRequest {
     @NotBlank
     private String titulo;
-    private String Descricao;
+    private String descricao;
     @NotBlank
     private String cargahoraria;
 }

@@ -6,7 +6,6 @@ import com.atividade_to_list.plataformadecursos.DTOs.UsuarioRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.UsuarioResponse;
 import com.atividade_to_list.plataformadecursos.Repository.CursoRepository;
 import com.atividade_to_list.plataformadecursos.entities.Curso;
-import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

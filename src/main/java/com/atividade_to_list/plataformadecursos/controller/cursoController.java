@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("curso")
-public class cursoController {
+@RequestMapping("cursos")
+public class CursoController {
 
     private final CursoService cursoService;
 
-    public cursoController(CursoService cursoService) {
+    public CursoController(CursoService cursoService) {
         this.cursoService = cursoService;
     }
 
@@ -37,6 +37,11 @@ public class cursoController {
     public ResponseEntity<CursoResponse> buscarPorId(@PathVariable Long id) {
         CursoResponse curso = cursoService.buscarpoid(id);
         return ResponseEntity.ok(curso);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizarCurso(@PathVariable Long id, @Valid @RequestBody CursoRequest request) {
+        String resposta = cursoService.atualizarid(id, request);
+        return ResponseEntity.ok(resposta);
     }
 
     @DeleteMapping("/{id}")

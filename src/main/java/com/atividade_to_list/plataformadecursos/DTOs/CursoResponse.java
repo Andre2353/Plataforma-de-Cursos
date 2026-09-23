@@ -11,11 +11,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CursoResponse {
+    private Long id;
     private String titulo;
-    private String Descricao;
+    private String descricao;
     @NotBlank
     private String cargahoraria;
 
-    public CursoResponse(Long id, @NotBlank String titulo, String descricao, @NotBlank String cargahoraria) {
-    }
 }
