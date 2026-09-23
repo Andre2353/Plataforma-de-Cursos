@@ -1,6 +1,5 @@
 package com.atividade_to_list.plataformadecursos.controller;
 
-import com.atividade_to_list.plataformadecursos.DTOs.CursoResponse;
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaResponse;
 import com.atividade_to_list.plataformadecursos.Sevice.MatriculaService;
@@ -36,6 +35,11 @@ public class MatriculaController {
     public ResponseEntity<MatriculaResponse> buscarPorId(@PathVariable Long id) {
         MatriculaResponse matricula = matriculaService.buscarpoid(id);
         return ResponseEntity.ok(matricula);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarCurso(@PathVariable Long id) {
+        matriculaService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
