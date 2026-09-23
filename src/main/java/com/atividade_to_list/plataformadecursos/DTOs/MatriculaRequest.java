@@ -1,6 +1,8 @@
 package com.atividade_to_list.plataformadecursos.DTOs;
 
+import com.atividade_to_list.plataformadecursos.entities.Curso;
 import com.atividade_to_list.plataformadecursos.entities.Status;
+import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,4 +20,6 @@ public class MatriculaRequest {
     private LocalDateTime dt_matricula;
     @NotBlank
     private Status status;
+    private Usuario usuarioId;
+    private Curso cursoId;
 }

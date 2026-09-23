@@ -18,6 +18,9 @@ public class MatriculaResponse {
     private Long id;
     private LocalDateTime dtMatricula;
     private Status status;
-    private Usuario usuario;
-    private Curso curso;
+    private Usuario usuarioId;
+    private Curso cursoId;
+
+    public MatriculaResponse(Long id, Usuario usuario, Curso curso) {
+    }
 }
