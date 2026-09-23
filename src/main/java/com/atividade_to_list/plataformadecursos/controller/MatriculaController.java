@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("curso")
+@RequestMapping("matriculas")
 public class MatriculaController {
 
     private final MatriculaService matriculaService;
@@ -23,9 +23,14 @@ public class MatriculaController {
 
 
     @PostMapping
-    public ResponseEntity<MatriculaResponse> criarCurso(@Valid @RequestBody MatriculaRequest request) {
+    public ResponseEntity<MatriculaResponse> criarMatrucula(@Valid @RequestBody MatriculaRequest request) {
         MatriculaResponse novaMatricula = matriculaService.criarMatricula(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaMatricula);
+    }
+    @GetMapping
+    public ResponseEntity<List<MatriculaResponse>> mostrarCmatriculas() {
+        List<MatriculaResponse> matricula = matriculaService.mostrarUsuarios();
+        return ResponseEntity.ok(matricula);
     }
 
 }
