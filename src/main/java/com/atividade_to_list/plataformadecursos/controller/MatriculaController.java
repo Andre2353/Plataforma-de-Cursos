@@ -32,6 +32,11 @@ public class MatriculaController {
         List<MatriculaResponse> matricula = matriculaService.mostrarUsuarios();
         return ResponseEntity.ok(matricula);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<MatriculaResponse> buscarPorId(@PathVariable Long id) {
+        MatriculaResponse matricula = matriculaService.buscarpoid(id);
+        return ResponseEntity.ok(matricula);
+    }
 
 }
 

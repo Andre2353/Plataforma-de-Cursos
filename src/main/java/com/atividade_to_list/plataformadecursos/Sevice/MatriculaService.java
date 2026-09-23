@@ -1,10 +1,12 @@
 package com.atividade_to_list.plataformadecursos.Sevice;
 
 
+import com.atividade_to_list.plataformadecursos.DTOs.CursoResponse;
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaResponse;
 
 import com.atividade_to_list.plataformadecursos.Repository.MatriculaRepository;
+import com.atividade_to_list.plataformadecursos.entities.Curso;
 import com.atividade_to_list.plataformadecursos.entities.Matricula;
 import org.springframework.stereotype.Service;
 
@@ -80,4 +82,6 @@ public class MatriculaService {
                 matricula.getCurso()
         );
     }
+
+
 }
