@@ -40,12 +40,21 @@ public class MatriculaService {
                 .toList();
     }
     public String deletar(long id) {
-        Optional<Usuario> usuario = matriculaRepository.findById(id);
-        if (usuario.isEmpty()) {
+        Optional<Matricula> matricula = matriculaRepository.findById(id);
+        if (matricula.isEmpty()) {
             return "Matricula não existe";
         } else {
             matriculaRepository.deleteById(id);
             return "Matricula kickada";
         }
+    }
+    public String atualizarid(Long id, Matricula matriculaatualizada) {
+        Matricula matriculaexistente = matriculaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Matricula não encontrada: " + id));
+
+       matriculaatualizada.setStatus(matriculaexistente.getStatus());
+
+        matriculaRepository.save(matriculaexistente);
+        return "matricula atualizado com sucesso";
     }
 }
