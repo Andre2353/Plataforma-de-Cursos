@@ -1,6 +1,8 @@
 package com.atividade_to_list.plataformadecursos.DTOs;
 
+import com.atividade_to_list.plataformadecursos.entities.Curso;
 import com.atividade_to_list.plataformadecursos.entities.Status;
+import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class MatriculaResponse {
     private Long id;
-    private LocalDateTime dt_matricula;
+    private LocalDateTime dtMatricula;
     private Status status;
+    private Usuario usuario;
+    private Curso curso;
 }

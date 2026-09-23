@@ -10,6 +10,7 @@ import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatriculaService {
@@ -21,7 +22,7 @@ public class MatriculaService {
     public MatriculaRequest criarMatricula(MatriculaRequest request) {
         Matricula matricula = new Matricula();
         matricula.setStatus(request.getStatus());
-        matricula.setDt_matricula(request.getDt_matricula());
+        matricula.setDtMatricula(request.getDt_matricula());
 
         matriculaRepository.save(matricula);
         return request;
@@ -30,10 +31,21 @@ public class MatriculaService {
         return matriculaRepository.findAll().stream()
                 .map(matricula -> new MatriculaResponse(
                         matricula.getId(),
-                        matricula.getDt_matricula(),
-                        matricula.getStatus()
+                        matricula.getDtMatricula(),
+                        matricula.getStatus(),
+                        matricula.getUsuario(),
+                        matricula.getCurso()
 
                 ))
                 .toList();
+    }
+    public String deletar(long id) {
+        Optional<Usuario> usuario = matriculaRepository.findById(id);
+        if (usuario.isEmpty()) {
+            return "Matricula não existe";
+        } else {
+            matriculaRepository.deleteById(id);
+            return "Matricula kickada";
+        }
     }
 }

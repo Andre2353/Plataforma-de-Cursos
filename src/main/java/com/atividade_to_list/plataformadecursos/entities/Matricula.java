@@ -15,12 +15,13 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "matriculas")
 @AllArgsConstructor
+
 @NoArgsConstructor
 public class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime dt_matricula;
+    private LocalDateTime dtMatricula;
     @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
