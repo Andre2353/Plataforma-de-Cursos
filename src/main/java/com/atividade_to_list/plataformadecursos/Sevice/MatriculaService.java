@@ -1,11 +1,15 @@
 package com.atividade_to_list.plataformadecursos.Sevice;
 
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaRequest;
+import com.atividade_to_list.plataformadecursos.DTOs.MatriculaResponse;
 import com.atividade_to_list.plataformadecursos.DTOs.UsuarioRequest;
+import com.atividade_to_list.plataformadecursos.DTOs.UsuarioResponse;
 import com.atividade_to_list.plataformadecursos.Repository.MatriculaRepository;
 import com.atividade_to_list.plataformadecursos.entities.Matricula;
 import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MatriculaService {
@@ -17,8 +21,19 @@ public class MatriculaService {
     public MatriculaRequest criarMatricula(MatriculaRequest request) {
         Matricula matricula = new Matricula();
         matricula.setStatus(request.getStatus());
+        matricula.setDt_matricula(request.getDt_matricula());
 
         matriculaRepository.save(matricula);
         return request;
+    }
+    public List<MatriculaResponse> mostrarUsuarios() {
+        return matriculaRepository.findAll().stream()
+                .map(matricula -> new MatriculaResponse(
+                        matricula.getId(),
+                        matricula.getDt_matricula(),
+                        matricula.getStatus()
+
+                ))
+                .toList();
     }
 }
