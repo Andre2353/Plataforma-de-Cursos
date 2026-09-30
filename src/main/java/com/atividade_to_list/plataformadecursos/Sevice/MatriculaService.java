@@ -5,6 +5,7 @@ import com.atividade_to_list.plataformadecursos.DTOs.CursoResponse;
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.MatriculaResponse;
 
+import com.atividade_to_list.plataformadecursos.DTOs.UsuarioResponse;
 import com.atividade_to_list.plataformadecursos.Repository.CursoRepository;
 import com.atividade_to_list.plataformadecursos.Repository.MatriculaRepository;
 import com.atividade_to_list.plataformadecursos.Repository.UsuarioRepository;
@@ -85,6 +86,16 @@ public class MatriculaService {
                         m.getCurso().getTitulo(),
                         m.getCurso().getDescricao(),
                         m.getCurso().getCargahoraria()
+                ))
+                .toList();
+    }
+    public List<UsuarioResponse> alunosDoCurso(Long cursoId) {
+        return matriculaRepository.findByCursoId(cursoId).stream()
+                .map(m -> new UsuarioResponse(
+                        m.getUsuario().getId(),
+                        m.getUsuario().getName(),
+                        m.getUsuario().getEmail(),
+                        m.getUsuario().getSenha()
                 ))
                 .toList();
     }
