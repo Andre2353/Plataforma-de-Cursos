@@ -46,6 +46,7 @@ public class CursoService {
                 .toList();
     }
 
+
     public CursoResponse buscarpoid(Long id) {
         Curso curso = cursoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException

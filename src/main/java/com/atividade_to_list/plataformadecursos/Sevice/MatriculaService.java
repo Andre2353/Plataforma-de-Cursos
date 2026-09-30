@@ -78,6 +78,16 @@ public class MatriculaService {
             return "Matricula kickada";
         }
     }
+    public List<CursoResponse> cursosDoAluno(Long usuarioId) {
+        return matriculaRepository.findByUsuarioId(usuarioId).stream()
+                .map(m -> new CursoResponse(
+                        m.getCurso().getId(),
+                        m.getCurso().getTitulo(),
+                        m.getCurso().getDescricao(),
+                        m.getCurso().getCargahoraria()
+                ))
+                .toList();
+    }
 
     public String atualizarid(Long id, MatriculaRequest request) {
         Matricula matriculaexistente = matriculaRepository.findById(id)
