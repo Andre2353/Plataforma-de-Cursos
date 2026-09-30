@@ -2,7 +2,9 @@ package com.atividade_to_list.plataformadecursos.controller;
 
 import com.atividade_to_list.plataformadecursos.DTOs.CursoRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.CursoResponse;
+import com.atividade_to_list.plataformadecursos.DTOs.UsuarioResponse;
 import com.atividade_to_list.plataformadecursos.Sevice.CursoService;
+import com.atividade_to_list.plataformadecursos.Sevice.MatriculaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +17,11 @@ import java.util.List;
 public class CursoController {
 
     private final CursoService cursoService;
+    private final MatriculaService matriculasService;
 
-    public CursoController(CursoService cursoService) {
+    public CursoController(CursoService cursoService, MatriculaService matriculasService) {
         this.cursoService = cursoService;
+        this.matriculasService = matriculasService;
     }
 
 
@@ -42,6 +46,10 @@ public class CursoController {
     public ResponseEntity<String> atualizarCurso(@PathVariable Long id, @Valid @RequestBody CursoRequest request) {
         String resposta = cursoService.atualizarid(id, request);
         return ResponseEntity.ok(resposta);
+    }
+    @GetMapping("/{id}/alunos")
+    public ResponseEntity<List<UsuarioResponse>> alunosDoCurso(@PathVariable Long id) {
+        return ResponseEntity.ok(matriculasService.alunosDoCurso(id));
     }
 
     @DeleteMapping("/{id}")

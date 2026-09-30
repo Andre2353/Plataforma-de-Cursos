@@ -1,7 +1,9 @@
 package com.atividade_to_list.plataformadecursos.controller;
 
+import com.atividade_to_list.plataformadecursos.DTOs.CursoResponse;
 import com.atividade_to_list.plataformadecursos.DTOs.UsuarioRequest;
 import com.atividade_to_list.plataformadecursos.DTOs.UsuarioResponse;
+import com.atividade_to_list.plataformadecursos.Sevice.MatriculaService;
 import com.atividade_to_list.plataformadecursos.Sevice.UsuarioService;
 import com.atividade_to_list.plataformadecursos.entities.Usuario;
 import jakarta.validation.Valid;
@@ -15,9 +17,11 @@ import java.util.List;
 @RequestMapping("usuario")
 public class UsuarioController {
     private final UsuarioService usuarioService;
+    private final MatriculaService matriculaService;
 
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, MatriculaService matriculaService) {
         this.usuarioService = usuarioService;
+        this.matriculaService = matriculaService;
     }
 
     @PostMapping
@@ -49,7 +53,9 @@ public class UsuarioController {
         String resposta = usuarioService.deletar(id);
         return ResponseEntity.ok(resposta);
     }
-
-
+    @GetMapping("/{id}/cursos")
+    public ResponseEntity<List<CursoResponse>> cursosDoAluno(@PathVariable Long id) {
+        return ResponseEntity.ok(matriculaService.cursosDoAluno(id));
+    }
 }
 
